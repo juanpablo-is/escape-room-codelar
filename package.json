@@ -4,7 +4,16 @@
   "workspaces": [
     "packages/*"
   ],
+  "scripts": {
+    "kill": "kill-port --port 3000, 3001",
+    "build": "lerna run build --parallel --stream",
+    "prestart": "npm install && lerna bootstrap",
+    "start": "lerna run start --parallel --stream",
+    "predev": "npm run kill",
+    "dev": "lerna run dev --parallel --stream"
+  },
   "devDependencies": {
+    "kill-port": "^2.0.1",
     "lerna": "^6.5.1"
   }
 }
