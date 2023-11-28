@@ -1,9 +1,18 @@
-function App () {
-  return (
-    <div className='w-screen h-screen flex justify-center items-center bg-[#050505]'>
-      <img src='./logo.png' alt='Logo CodeLar' />
-    </div>
-  )
+import { useEffect } from 'react';
+
+import { Home, Lounge } from '@/pages';
+import { useGame } from '@/store';
+import { states } from '@/utils';
+
+function App() {
+  const { socket, state } = useGame();
+
+  useEffect(() => {
+    socket.connect();
+  }, [socket]);
+
+  if (state === states.INITIAL) return <Home />;
+  return <Lounge />;
 }
 
-export default App
+export default App;
