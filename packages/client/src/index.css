@@ -1,0 +1,14 @@
+@font-face {
+  font-family: 'Bungee Shade';
+  src: url('./fonts/bungee-shade-latin-400-normal.ttf');
+}
+
+@font-face {
+  font-family: 'Gloria Hallelujah';
+  src: url('./fonts/gloria-hallelujah-latin-400-normal.ttf');
+}
+
+@font-face {
+  font-family: 'VT323';
+  src: url('./fonts/vt323-latin-400-normal.ttf');
+}

@@ -1,13 +1,20 @@
-import { defineConfig, presetIcons, presetWebFonts, presetUno } from 'unocss'
+import { defineConfig, presetIcons, presetUno } from 'unocss'
 
 export default defineConfig({
-  theme: {},
+  theme: {
+    colors: {
+      primary: '#EAA806',
+      dark: '#000100'
+    },
+    fontFamily: {
+      primary: ['Bungee Shade', 'cursive'],
+      secondary: ['Gloria Hallelujah', 'cursive'],
+      tertiary: ['VT323', 'cursive']
+    }
+  },
   presets: [
     presetUno(),
-    presetWebFonts({
-      provider: 'google',
-      fonts: {}
-    }),
+
     presetIcons({
       cdn: 'https://esm.sh/',
       extraProperties: {
