@@ -12,6 +12,14 @@ export default defineConfig({
       tertiary: ['VT323', 'cursive']
     }
   },
+  rules: [
+    [
+      /^grid-repeat-([\.\d]+)$/,
+      ([_, num]) => ({
+        'grid-template-columns': `repeat(auto-fit, minmax(${num}px, 1fr))`
+      })
+    ]
+  ],
   presets: [
     presetUno(),
 
