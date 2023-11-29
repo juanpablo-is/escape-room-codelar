@@ -1,29 +1,33 @@
 import { useState, useEffect } from 'react';
 
-import { Background, Bauble } from '@/components';
+import { Bauble } from '@/components';
 import { useGame } from '@/store';
+import { states } from '@/utils';
 
 const Lounge = () => {
-  const { socket } = useGame();
+  const { socket, setState } = useGame();
   const [users, setUsers] = useState([]);
 
   useEffect(() => {
     socket.emit('list-users', (users) => setUsers(users));
-    socket.on('list-users', (users) => setUsers(users));
 
-    return () => socket.off('list-users');
+    socket.on('list-users', (users) => setUsers(users));
+    socket.on('game:order-team', (data) => setState(states.TEAM, data));
+
+    return () => {
+      socket.off('list-users');
+      socket.off('game:order-team');
+    };
   }, [socket]);
 
   return (
-    <Background opacitySnow={0.4}>
-      <div className="text-white flex justify-center items-center font-primary flex-col gap-10 z-50 w-full">
-        <div className="grid grid-repeat-100 justify-items-center gap-14 w-auto max-w-xl">
-          {users.map((user, i) => (
-            <Bauble key={i} {...user} />
-          ))}
-        </div>
+    <div className="text-white flex justify-center items-center font-primary flex-col gap-10 z-50 w-full h-full">
+      <div className="grid grid-repeat-120 justify-items-center gap-14 w-full max-w-2xl overflow-auto">
+        {users.map((user, i) => (
+          <Bauble key={i} {...user} />
+        ))}
       </div>
-    </Background>
+    </div>
   );
 };
 
