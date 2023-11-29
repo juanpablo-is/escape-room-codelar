@@ -1,21 +1,21 @@
-import { shuffle } from '../../utils.js'
+import { getRandomColor } from '../../utils.js'
 
-const COLORS = ['red', 'green', 'blue', 'yellow', 'pink', 'gray']
-
-const event = ({ store }, username, cb) => {
-  const existUsername = store.users.some(
+const event = ({ store, socket, io }, username, cb) => {
+  const existUsername = [...store.users.values()].some(
     u => u.name.toLowerCase() === username.toLowerCase()
   )
 
   if (!existUsername) {
-    store.users.push({ name: username, color: getRandomColor() })
+    store.users.set(socket.id, {
+      idSocket: socket.id,
+      name: username,
+      color: getRandomColor()
+    })
+
+    io.emit('list-users', [...store.users.values()])
   }
 
   cb(!existUsername)
-}
-
-const getRandomColor = () => {
-  return shuffle(COLORS).shift()
 }
 
 export default event
