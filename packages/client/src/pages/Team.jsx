@@ -3,9 +3,11 @@ import { toast } from 'sonner';
 
 import { Alert, Bauble } from '@/components';
 import { useGame } from '@/store';
+import { states } from '@/utils';
 
 const Team = (props) => {
-  const { nick, isLeader, setIsLeader, socket } = useGame();
+  const { nick, isLeader, setIsLeader, socket, setState, setIdTeam } =
+    useGame();
   const [data, setData] = useState(props);
 
   function changeLeader(nameLeader) {
@@ -32,12 +34,17 @@ const Team = (props) => {
 
   useEffect(() => {
     socket.on('game:set-team', (team) => setData(team));
+    socket.on('game:start', (data) => setState(states.ROOM, data));
 
-    return () => socket.off('game:set-team');
+    return () => {
+      socket.off('game:set-team');
+      socket.off('game:start');
+    };
   }, [socket]);
 
   useEffect(() => {
     if (data.leader === nick) setIsLeader(true);
+    if (data.id) setIdTeam(data.id);
   }, [data]);
 
   return (
