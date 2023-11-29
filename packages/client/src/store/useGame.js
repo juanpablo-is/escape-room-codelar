@@ -14,11 +14,13 @@ export default create((set, get) => ({
   state: [states.INITIAL, {}],
   isLeader: false,
   nick: '',
+  idTeam: '',
 
   setState: (newState, props) => {
     const exist = Object.values(states).includes(newState)
     if (exist) return set({ state: [newState, props] })
   },
   setIsLeader: isLeader => set({ isLeader }),
-  setNick: nick => set({ nick })
+  setNick: nick => set({ nick }),
+  setIdTeam: idTeam => set({ idTeam })
 }))
