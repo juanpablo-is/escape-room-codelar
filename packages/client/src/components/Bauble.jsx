@@ -1,6 +1,9 @@
 import { useMemo } from 'react';
+import { cn } from '@/utils';
 
-const Bauble = ({ name, color }) => {
+const Bauble = ({ name, color, className, onClick, children }) => {
+  const clsx = cn('bauble font-primary', className);
+
   const letters = useMemo(() => {
     if (!name) return 'CL';
 
@@ -9,8 +12,17 @@ const Bauble = ({ name, color }) => {
   }, [name]);
 
   return (
-    <div title={name} className="bauble" style={{ '--bauble-color': color }}>
-      {letters}
+    <div className="flex flex-col gap-2 items-center py-2">
+      <div
+        title={name}
+        className={clsx}
+        style={{ '--bauble-color': color }}
+        onClick={onClick}
+      >
+        {letters}
+      </div>
+
+      {children && <p className="w-full text-center truncate">{children}</p>}
     </div>
   );
 };
