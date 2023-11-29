@@ -16,6 +16,19 @@ export const shuffle = array => {
   return cloned
 }
 
-export const COLORS = ['red', 'green', 'blue', 'yellow', 'pink', 'gray']
+export const COLORS = [
+  '#00A543',
+  '#D8000A',
+  '#007188',
+  '#565555',
+  '#B78B4C',
+  '#0189CC',
+  '#E94616',
+  '#B12507',
+  '#C0C0C0',
+  '#800080',
+  '#40E0D0',
+  '#EAA806'
+]
 
 export const getRandomColor = () => shuffle(COLORS).shift()

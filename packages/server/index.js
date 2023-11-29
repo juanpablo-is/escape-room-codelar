@@ -16,7 +16,7 @@ const io = new Server(server, {
 const store = {
   users: new Map(),
   teams: new Map(),
-  gameRoom: 1 // que juego se usará
+  escapeGame: 0 // que juego se usará
 }
 
 io.use(registerEvent({ store: store }))
