@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { toast } from 'sonner';
 
 import { Home, Lounge, Room, Team } from '@/pages';
 import { useGame } from '@/store';
@@ -12,6 +13,15 @@ function App() {
 
   useEffect(() => {
     socket.connect();
+
+    socket.on('game:alert', ({ type, message }) => {
+      if (type && message) {
+        const alert = toast[type] || toast.info;
+        alert(message);
+      }
+    });
+
+    return () => socket.off('game:alert');
   }, [socket]);
 
   if (STATUS === states.INITIAL) return <Home {...props} />;
