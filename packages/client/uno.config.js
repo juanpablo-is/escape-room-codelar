@@ -10,6 +10,17 @@ export default defineConfig({
       primary: ['Bungee Shade', 'cursive'],
       secondary: ['Gloria Hallelujah', 'cursive'],
       tertiary: ['VT323', 'cursive']
+    },
+    animation: {
+      keyframes: {
+        opacity: '{0% { opacity:0} 100% { opacity:1}}'
+      },
+      durations: {
+        opacity: '2s'
+      },
+      timingFns: {
+        opacity: 'alternate'
+      }
     }
   },
   rules: [
