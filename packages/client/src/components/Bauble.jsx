@@ -12,7 +12,7 @@ const Bauble = ({ name, color, className, onClick, children }) => {
   }, [name]);
 
   return (
-    <div className="flex flex-col gap-2 items-center py-2">
+    <div className="flex flex-col gap-2 items-center py-3">
       <div
         title={name}
         className={clsx}

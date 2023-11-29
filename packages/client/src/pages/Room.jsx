@@ -6,33 +6,38 @@ import { toast } from 'sonner';
 import { Button, Input } from '@/components';
 import { useGame } from '@/store';
 
-const Room = () => {
-  const { socket, isLeader } = useGame();
-  const [room, setRoom] = useState();
+const Room = (props) => {
+  const { socket, isLeader, idTeam } = useGame();
+  const [room, setRoom] = useState(props);
 
   useEffect(() => {
-    socket.emit('game:get-room', setRoom);
-
     socket.on('game:get-room', setRoom);
     return () => socket.off('game:get-room');
   }, [socket]);
 
   function handlerResponse(value) {
-    socket.emit('game:response-room', { value, idRoom: 1 }, ({ status }) => {
-      if (!status) return toast.error('Respuesta incorrecta');
+    socket.emit(
+      'game:team:answer-room',
+      { value, idTeam },
+      ({ status, message }) => {
+        if (!status) return toast.error(message);
 
-      return toast.success('Respuesta correcta');
-    });
+        return toast.success(message);
+      }
+    );
   }
 
-  if (!room) return '';
+  if (!room || !room.id) return '';
 
   return (
-    <div className="w-[90%] max-w-2xl bg-dark z-50 h-full text-white flex gap-3 items-center flex-col py-4">
+    <div
+      key={room.id}
+      className="w-[90%] max-w-2xl bg-dark z-50 h-full text-white flex gap-3 items-center flex-col py-4 animate-opacity"
+    >
       <h1 className="font-tertiary uppercase text-4xl">{room.name}</h1>
       <hr className="w-full" />
 
-      <div className="flex-1 w-full font-tertiary p-3 text-xl">
+      <div className="flex-1 w-full font-tertiary p-3 text-xl overflow-auto">
         <Markdown remarkPlugins={[remarkGfm]}>{room.statement}</Markdown>
       </div>
 
