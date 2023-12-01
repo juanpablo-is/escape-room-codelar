@@ -15,13 +15,11 @@ const Room = (props) => {
   useEffect(() => {
     // socket.emit('game:get-room', setRoom);
     socket.on('game:get-room', setRoom);
-    socket.on('game:team:show-results', (data) =>
-      setState(states.RESULT, data)
-    );
+    socket.on('game:team:show-cart', (data) => setState(states.CART, data));
 
     return () => {
       socket.off('game:get-room');
-      socket.off('game:team:show-results');
+      socket.off('game:team:show-cart');
     };
   }, [socket]);
 
