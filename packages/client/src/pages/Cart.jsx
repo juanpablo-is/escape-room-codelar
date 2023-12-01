@@ -33,9 +33,9 @@ const Cart = ({ message }) => {
   }, [socket]);
 
   return (
-    <div className="text-white text-2xl flex justify-center items-center font-tertiary flex-col gap-10 z-50 w-full h-full max-w-2xl">
-      <form className="flex flex-col gap-4" onSubmit={handlerSubmitCart}>
-        <section className="markdown">
+    <div className="text-white text-2xl flex justify-center items-center font-tertiary flex-col gap-10 z-50 w-full h-full max-h-[90%] px-5 max-w-2xl">
+      <form className="flex flex-col gap-4 overflow-auto" onSubmit={handlerSubmitCart}>
+        <section className="markdown overflow-auto">
           <Markdown
             remarkPlugins={[remarkGfm]}
             rehypePlugins={[rehypeRaw]}
