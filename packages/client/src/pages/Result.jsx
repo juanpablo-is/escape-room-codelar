@@ -1,8 +1,12 @@
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { relative } from '@/utils';
 
 const Result = (data) => {
   const [finishGame, setFinishGame] = useState(false);
+
+  const totalTime = useMemo(() => {
+    return data.rooms.reduce((acc, room) => (acc += room.time), 0);
+  }, [data]);
 
   if (!data || !data.rooms) return '';
 
@@ -31,6 +35,19 @@ const Result = (data) => {
           </div>
         ))}
       </div>
+
+      <span className="font-secondary text-end w-full">
+        Su equipo{' '}
+        {data.teamName && (
+          <span className="text-primary">{data.teamName} </span>
+        )}
+        ha terminado el
+        <strong className="font-bold text-primary">
+          {' '}
+          "EscapeRoom CodeLar"{' '}
+        </strong>
+        {relative(totalTime, { prefix: 'en', useRound: false })}
+      </span>
 
       <p className="w-full flex justify-end font-secondary font-bold text-primary text-xl">
         Total de {data.points} puntos
