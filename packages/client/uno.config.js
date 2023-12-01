@@ -8,8 +8,8 @@ export default defineConfig({
       dark: '#000100'
     },
     fontFamily: {
-      primary: ['Bungee Shade', 'cursive'],
-      secondary: ['Gloria Hallelujah', 'cursive'],
+      primary: ['BungeeShade', 'cursive'],
+      secondary: ['GloriaHallelujah', 'cursive'],
       tertiary: ['VT323', 'cursive']
     },
     animation: {
