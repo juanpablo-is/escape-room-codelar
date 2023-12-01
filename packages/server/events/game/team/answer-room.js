@@ -87,7 +87,7 @@ const event = ({ io, store }, data, cb) => {
           type: 'info',
           message: `El equipo '${team.name}' ya ha terminado`
         })
-      io.to(idTeam).emit('game:show-results', results)
+      io.to(idTeam).emit('game:team:show-results', results)
     }
   }
 }
