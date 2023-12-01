@@ -62,13 +62,15 @@ const event = ({ io, store }, data, cb) => {
 
     if (hasNextRoom(escapeGame, roomLevel)) {
       const roomData = rooms[team.currentRoom + 1]
-      io.to(idTeam).emit('game:get-room', { ...roomData, response: {} })
+      const { value, ...response } = roomData.response
+      io.to(idTeam).emit('game:get-room', { ...roomData, response })
 
       team.currentRoom++
       team.rooms.push({ timeStart: +new Date(), attempts: 0, finish: false })
     } else {
       const results = {
         points: team.points,
+        teamName: team.name,
         rooms: rooms.map((room, i) => ({
           name: room.name,
           points: team.rooms[i] ? team.rooms[i].points : 0,
