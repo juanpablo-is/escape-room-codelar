@@ -3,5 +3,6 @@ export default {
   WAIT: 1,
   TEAM: 2,
   ROOM: 3,
-  RESULT: 4
+  CART: 4,
+  RESULT: 5
 }

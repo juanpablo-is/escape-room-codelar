@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { toast } from 'sonner';
 
-import { Home, Lounge, Result, Room, Team } from '@/pages';
+import { Cart, Home, Lounge, Result, Room, Team } from '@/pages';
 import { useGame } from '@/store';
 import { states } from '@/utils';
 
@@ -28,6 +28,7 @@ function App() {
   if (STATUS === states.WAIT) return <Lounge {...props} />;
   if (STATUS === states.TEAM) return <Team {...props} />;
   if (STATUS === states.ROOM) return <Room {...props} />;
+  if (STATUS === states.CART) return <Cart {...props} />;
   if (STATUS === states.RESULT) return <Result {...props} />;
 }
 
