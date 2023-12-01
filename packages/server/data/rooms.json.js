@@ -127,6 +127,27 @@ Trabajando juntos, los equipos deben descifrar las claves proporcionadas por Jua
 **¡Que comience la búsqueda del día y el mes perfectos para la Fiesta Secreta de Santa!**
 `
       }
-    ]
+    ],
+    cartMessage: `
+Querido equipo de **CodeLar**,
+
+<br/>
+
+En esta época navideña, quiero expresar mi agradecimiento a cada uno de ustedes. Ha sido un año lleno de desafíos y éxitos, pero juntos hemos demostrado que somos más que compañeros, somos una <hide>familia</hide>. Gracias por su dedicación y contribuciones significativas.
+
+<br />
+
+Que la luz de la <hide>vela</hide> ilumine nuestros corazones con alegría y esperanza durante estas festividades. Les deseo a todos un feliz navidad y <hide>feliz próspero año</hide> nuevo, lleno de momentos especiales con sus seres queridos. Que la paz y la felicidad reinen en sus hogares.
+
+<br/>
+
+¡Felices fiestas!
+
+<br/>
+
+Con gratitud,
+
+**Juan Pablo Barrera**
+`
   }
 ]
