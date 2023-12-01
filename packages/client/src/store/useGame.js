@@ -8,6 +8,9 @@ const socket = io(import.meta.env.VITE_URL_SERVER_SOCKET, {
   closeOnBeforeunload: false
 })
 
+// TODO: borrar a futuro
+window.socketCL = socket
+
 export default create((set, get) => ({
   socket: socket,
 
