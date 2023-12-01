@@ -17,7 +17,7 @@ const event = ({ io, store }, data, cb) => {
     return cb({ status: false, message: 'Ya ha respondido a esta sala' })
   }
 
-  const rooms = RoomsData[escapeGame].rooms
+  const { rooms, cartMessage } = RoomsData[escapeGame]
   const room = rooms[roomLevel]
 
   if (!room || !room.response?.value) {
@@ -64,33 +64,17 @@ const event = ({ io, store }, data, cb) => {
       const roomData = rooms[team.currentRoom + 1]
       const { value, ...response } = roomData.response
       io.to(idTeam).emit('game:get-room', { ...roomData, response })
-
-      team.currentRoom++
-      team.rooms.push({ timeStart: +new Date(), attempts: 0, finish: false })
     } else {
-      const results = {
-        points: team.points,
-        teamName: team.name,
-        rooms: rooms.map((room, i) => ({
-          name: room.name,
-          points: team.rooms[i] ? team.rooms[i].points : 0,
-          time: team.rooms[i]
-            ? getSecondsDiff({
-                timeStart: team.rooms[i].timeStart,
-                timeFinish: team.rooms[i].timeFinish
-              })
-            : 0
-        }))
-      }
-
-      io.to('game')
-        .except(idTeam)
-        .emit('game:alert', {
-          type: 'info',
-          message: `El equipo '${team.name}' ya ha terminado`
-        })
-      io.to(idTeam).emit('game:team:show-results', results)
+      io.to(idTeam).emit('game:team:show-cart', { message: cartMessage })
     }
+
+    team.currentRoom++
+    team.rooms.push({
+      timeStart: +new Date(),
+      attempts: 0,
+      points: 0,
+      finish: false
+    })
   }
 }
 
