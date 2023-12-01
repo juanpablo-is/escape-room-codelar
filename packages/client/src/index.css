@@ -75,3 +75,8 @@
   height: 80%;
   width: 80%;
 }
+
+.markdown strong {
+  color: theme('colors.primary');
+  font-weight: bold;
+}
