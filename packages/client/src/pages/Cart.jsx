@@ -34,7 +34,10 @@ const Cart = ({ message }) => {
 
   return (
     <div className="text-white text-2xl flex justify-center items-center font-tertiary flex-col gap-10 z-50 w-full h-full max-h-[90%] px-5 max-w-2xl">
-      <form className="flex flex-col gap-4 overflow-auto" onSubmit={handlerSubmitCart}>
+      <form
+        className="flex flex-col gap-4 overflow-auto"
+        onSubmit={handlerSubmitCart}
+      >
         <section className="markdown overflow-auto">
           <Markdown
             remarkPlugins={[remarkGfm]}
@@ -65,6 +68,20 @@ export default Cart;
 const WordHidden = ({ word }) => {
   const id = useId();
 
+  // TODO: update handler
+  function onInputLetter({ value, index, parent }) {
+    const isClear = !value;
+    if (isClear) {
+      if (index > 0) {
+        parent.children[index - 1].focus();
+      }
+    } else {
+      if (index + 1 < parent.children.length) {
+        parent.children[index + 1].focus();
+      }
+    }
+  }
+
   return (
     <div className="inline-block">
       {word.split(' ').map((w, i) => (
@@ -78,6 +95,13 @@ const WordHidden = ({ word }) => {
               name={id}
               required
               className="border border-white text-center w-6 bg-primary/40"
+              onKeyUp={(e) =>
+                onInputLetter({
+                  value: e.target.value,
+                  index: index,
+                  parent: e.target.parentElement,
+                })
+              }
             />
           ))}
         </div>
