@@ -6,19 +6,20 @@ import { useGame } from '@/store';
 import { states } from '@/utils';
 
 const Team = (props) => {
-  const { nick, isLeader, setIsLeader, socket, setState, setIdTeam } =
-    useGame();
+  const { isLeader, setIsLeader, socket, setState, setIdTeam } = useGame();
   const [data, setData] = useState(props);
 
-  function changeLeader(nameLeader) {
+  function changeLeader(idUser) {
     if (!isLeader) return;
-    if (nick === nameLeader) {
+    if (socket.id === idUser) {
       return toast.info('Ya tienes rol lider del equipo');
     }
 
-    socket.emit('game:team:set-leader', { idTeam: data.id, nameLeader }, () => {
-      setIsLeader(false);
-    });
+    socket.emit(
+      'game:team:set-leader',
+      { idTeam: data.id, idUser: idUser },
+      () => setIsLeader(false)
+    );
   }
 
   function handlerChangeName(e) {
@@ -43,7 +44,7 @@ const Team = (props) => {
   }, [socket]);
 
   useEffect(() => {
-    if (data.leader === nick) setIsLeader(true);
+    if (data.leader === socket.id) setIsLeader(true);
     if (data.id) setIdTeam(data.id);
   }, [data]);
 
@@ -76,15 +77,15 @@ const Team = (props) => {
 
       <div className="gap-10 w-full grid-repeat-120 w-full overflow-auto grid">
         {data.participants
-          .filter((u) => u.name !== nick)
+          // .filter((u) => u.name !== nick)
           .map((participant, i) => (
             <Bauble
-              key={i}
+              key={participant.idSocket}
               name={participant.name}
               color={participant.color}
-              onClick={() => changeLeader(participant.name)}
+              onClick={() => changeLeader(participant.idSocket)}
             >
-              {data.leader === participant.name && '👑'} {participant.name}
+              {data.leader === participant.idSocket && '👑'} {participant.name}
             </Bauble>
           ))}
       </div>

@@ -41,7 +41,7 @@ function getRandomTeams ({ users = [], count = 0 }) {
         name: `Equipo #${i + 1}`,
         id: idTeam,
         participants,
-        leader: participants[0].name,
+        leader: participants[0].idSocket,
         points: 0
       })
     }
