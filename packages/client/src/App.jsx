@@ -9,11 +9,13 @@ function App() {
   const {
     socket,
     state: [STATUS, props],
+    setIsLeader,
   } = useGame();
 
   useEffect(() => {
     socket.connect();
 
+    socket.on('game:team:set-leader', (leader) => setIsLeader(leader));
     socket.on('game:alert', ({ type, message }) => {
       if (type && message) {
         const alert = toast[type] || toast.info;
@@ -21,7 +23,12 @@ function App() {
       }
     });
 
-    return () => socket.off('game:alert');
+    return () => {
+      socket.off('game:team:set-leader');
+      socket.off('game:alert');
+
+      socket.disconnect();
+    };
   }, [socket]);
 
   if (STATUS === states.INITIAL) return <Home {...props} />;

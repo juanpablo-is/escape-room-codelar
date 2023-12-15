@@ -13,7 +13,6 @@ const Room = (props) => {
   const [room, setRoom] = useState(props);
 
   useEffect(() => {
-    // socket.emit('game:get-room', setRoom);
     socket.on('game:get-room', setRoom);
     socket.on('game:team:show-cart', (data) => setState(states.CART, data));
 

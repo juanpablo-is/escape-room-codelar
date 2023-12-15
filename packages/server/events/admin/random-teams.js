@@ -15,6 +15,8 @@ const event = ({ store, io }) => {
     io.socketsLeave(id)
 
     participants.forEach(participant => {
+      store.users.set(participant.idSocket, { ...participant, team: id })
+
       const _socket = io.sockets.sockets.get(participant.idSocket)
       if (_socket) {
         _socket.join(id)
