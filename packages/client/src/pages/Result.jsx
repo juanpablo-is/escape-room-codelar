@@ -1,12 +1,14 @@
-import { useState, useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { relative } from '@/utils';
 
 const Result = (data) => {
-  const [finishGame, setFinishGame] = useState(false);
-
   const totalTime = useMemo(() => {
     return data.rooms.reduce((acc, room) => (acc += room.time), 0);
   }, [data]);
+
+  useEffect(() => {
+    sessionStorage.removeItem('CLER:user');
+  }, []);
 
   if (!data || !data.rooms) return '';
 
