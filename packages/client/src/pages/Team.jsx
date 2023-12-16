@@ -7,7 +7,7 @@ import { states } from '@/utils';
 
 const Team = (props) => {
   const { isLeader, setIsLeader, socket, setState, setIdTeam } = useGame();
-  const [data, setData] = useState(props);
+  const [teamData, setTeamData] = useState(props);
 
   function changeLeader(idUser) {
     if (!isLeader) return;
@@ -17,7 +17,7 @@ const Team = (props) => {
 
     socket.emit(
       'game:team:set-leader',
-      { idTeam: data.id, idUser: idUser },
+      { idTeam: teamData.id, idUser: idUser },
       () => setIsLeader(false)
     );
   }
@@ -26,15 +26,15 @@ const Team = (props) => {
     const value = e.target.innerText.trim();
 
     if (!value) {
-      e.target.innerText = data.name;
+      e.target.innerText = teamData.name;
       return toast.error('Debe ingresar un valor');
     }
 
-    socket.emit('game:team:set-name', { idTeam: data.id, name: value });
+    socket.emit('game:team:set-name', { idTeam: teamData.id, name: value });
   }
 
   useEffect(() => {
-    socket.on('game:set-team', (team) => setData(team));
+    socket.on('game:set-team', (team) => setTeamData(team));
     socket.on('game:start', (data) => setState(states.ROOM, data));
 
     return () => {
@@ -44,9 +44,9 @@ const Team = (props) => {
   }, [socket]);
 
   useEffect(() => {
-    if (data.leader === socket.id) setIsLeader(true);
-    if (data.id) setIdTeam(data.id);
-  }, [data]);
+    if (teamData.leader === socket.id) setIsLeader(true);
+    if (teamData.id) setIdTeam(teamData.id);
+  }, [teamData]);
 
   return (
     <div className="w-[90%] font-tertiary h-full text-2xl justify-center max-w-2xl z-50 text-white flex gap-5 items-center flex-col py-4">
@@ -63,7 +63,7 @@ const Team = (props) => {
         className="text-4xl font-secondary uppercase"
         onBlur={handlerChangeName}
       >
-        {data.name}
+        {teamData.name}
       </h2>
 
       <span className="text-center">
@@ -76,7 +76,7 @@ const Team = (props) => {
       </span>
 
       <div className="gap-10 w-full grid-repeat-120 w-full overflow-auto grid">
-        {data.participants
+        {teamData.participants
           // .filter((u) => u.name !== nick)
           .map((participant, i) => (
             <Bauble
@@ -85,7 +85,8 @@ const Team = (props) => {
               color={participant.color}
               onClick={() => changeLeader(participant.idSocket)}
             >
-              {data.leader === participant.idSocket && '👑'} {participant.name}
+              {teamData.leader === participant.idSocket && '👑'}{' '}
+              {participant.name}
             </Bauble>
           ))}
       </div>
