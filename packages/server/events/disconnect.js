@@ -7,17 +7,19 @@ const event = ({ store, io, socket }) => {
   store.users.delete(socket.id)
 
   const team = store.teams.get(user.team)
+  if (!team) return
+
+  const removeParticipant = team.participants.filter(
+    p => p.idSocket !== socket.id
+  )
+  team.participants = removeParticipant
+
   const isLeader = team.leader === socket.id
-
   if (isLeader) {
-    const removeParticipant = team.participants.filter(
-      p => p.idSocket !== socket.id
-    )
-
     const [newLeader] = shuffle(removeParticipant)
+
     if (newLeader) {
       team.leader = newLeader.idSocket
-      team.participants = removeParticipant
 
       io.to(team.id).emit('game:set-team', team)
       io.to(team.id).emit('game:alert', {
