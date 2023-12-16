@@ -24,7 +24,7 @@ const event = ({ store, io, socket }) => {
       io.to(team.id).emit('game:set-team', team)
       io.to(team.id).emit('game:alert', {
         type: 'info',
-        message: `Su leader se ha desconectado, el nuevo lider es ${newLeader.name}`
+        message: `Su lider se ha desconectado, el nuevo lider es ${newLeader.name}`
       })
 
       socket.emit('game:team:set-leader', false)

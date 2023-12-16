@@ -9,6 +9,12 @@ const event = ({ io, store }, data, cb) => {
 
   io.to(idTeam).emit('game:set-team', team)
 
+  const user = store.users.get(idUser)
+  io.to(idTeam).emit('game:alert', {
+    type: 'info',
+    message: `Lider del equipo es ${user.name}`
+  })
+
   cb()
 }
 
