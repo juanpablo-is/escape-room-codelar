@@ -7,3 +7,7 @@ export function getEscapeGame (gameCount = 0) {
 export function getRoomsByGame (gameCount) {
   return RoomsData[gameCount] ? RoomsData[gameCount].rooms : false
 }
+
+export function hasNextRoom (escape, room) {
+  return RoomsData[escape] && room + 1 < RoomsData[escape].rooms.length
+}
