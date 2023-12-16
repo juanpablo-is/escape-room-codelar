@@ -9,11 +9,20 @@ function App() {
   const {
     socket,
     state: [STATUS, props],
+    nick,
+    idTeam,
+    setState,
     setIsLeader,
   } = useGame();
 
   useEffect(() => {
     socket.connect();
+
+    socket.emit('status-server', { nick, idTeam }, ({ state, data }) => {
+      if (Object.values(states).includes(state)) {
+        setState(state, data);
+      }
+    });
 
     socket.on('game:team:set-leader', (leader) => setIsLeader(leader));
     socket.on('game:alert', ({ type, message }) => {
