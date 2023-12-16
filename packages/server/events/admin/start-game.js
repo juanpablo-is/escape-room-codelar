@@ -26,8 +26,8 @@ const event = ({ store, socket, io }, cb = () => {}) => {
     })
   })
 
-  const firstRooom = roomsGame[0]
-  io.to('game').emit('game:start', firstRooom)
+  const { value, ...response } = roomsGame[0]
+  io.to('game').emit('game:start', response)
 
   cb({ status: true })
 }

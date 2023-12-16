@@ -5,6 +5,7 @@ import {
   ATTEMPT_POINT,
   SECOND_POINT
 } from '../../../const.js'
+import { hasNextRoom } from '../../../room.js'
 
 const event = ({ io, store }, data, cb) => {
   const { escapeGame, teams } = store
@@ -76,10 +77,6 @@ const event = ({ io, store }, data, cb) => {
       finish: false
     })
   }
-}
-
-function hasNextRoom (escape, room) {
-  return RoomsData[escape] && room + 1 < RoomsData[escape].rooms.length
 }
 
 function getSecondsDiff ({ timeStart, timeFinish }) {
