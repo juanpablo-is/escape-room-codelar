@@ -19,6 +19,11 @@ const event = ({ store, io, socket }, data, cb) => {
     team.participants ||= []
     team.participants.push(user)
 
+    if (team.participants.length === 1) {
+      team.leader = socket.id
+      socket.emit('game:team:set-leader', true)
+    }
+
     socket.join(idTeam)
     socket.join('game')
 
