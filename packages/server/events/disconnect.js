@@ -5,6 +5,7 @@ const event = ({ store, io, socket }) => {
   if (!user) return
 
   store.users.delete(socket.id)
+  io.emit('list-users', [...store.users.values()])
 
   const team = store.teams.get(user.team)
   if (!team) return
@@ -21,10 +22,9 @@ const event = ({ store, io, socket }) => {
     if (newLeader) {
       team.leader = newLeader.idSocket
 
-      io.to(team.id).emit('game:set-team', team)
       io.to(team.id).emit('game:alert', {
         type: 'info',
-        message: `Su lider se ha desconectado, el nuevo lider es ${newLeader.name}`
+        message: `Su lider se ha desconectado, ${newLeader.name} es ahora lider de su equipo`
       })
 
       socket.emit('game:team:set-leader', false)
@@ -32,7 +32,7 @@ const event = ({ store, io, socket }) => {
     }
   }
 
-  io.emit('list-users', [...store.users.values()])
+  io.to(team.id).emit('game:set-team', team)
 }
 
 export default event

@@ -78,6 +78,7 @@ const Team = (props) => {
       <div className="gap-10 w-full grid-repeat-120 w-full overflow-auto grid">
         {teamData.participants
           // .filter((u) => u.name !== nick)
+          .sort((a) => (a.idSocket === teamData.leader ? -1 : 1))
           .map((participant, i) => (
             <Bauble
               key={participant.idSocket}
