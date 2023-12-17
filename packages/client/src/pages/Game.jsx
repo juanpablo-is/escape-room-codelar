@@ -1,11 +1,19 @@
 import { useEffect } from 'react';
 import { toast } from 'sonner';
 
-import { Cart, Home, Loading, Lounge, Result, Room, Team } from '@/layouts/game';
+import {
+  Cart,
+  Home,
+  Loading,
+  Lounge,
+  Result,
+  Room,
+  Team,
+} from '@/layouts/game';
 import { useGame } from '@/store';
 import { states } from '@/utils';
 
-function App() {
+const Game = () => {
   const {
     socket,
     state: [STATUS, props],
@@ -48,6 +56,6 @@ function App() {
   if (STATUS === states.RESULT) return <Result {...props} />;
 
   return <Loading />;
-}
+};
 
-export default App;
+export default Game;
