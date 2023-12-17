@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { toast } from 'sonner';
 
-import { Cart, Home, Loading, Lounge, Result, Room, Team } from '@/pages';
+import { Cart, Home, Loading, Lounge, Result, Room, Team } from '@/layouts/game';
 import { useGame } from '@/store';
 import { states } from '@/utils';
 
