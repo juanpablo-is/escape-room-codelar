@@ -1,6 +1,7 @@
 import express from 'express'
 import http from 'http'
 import { Server } from 'socket.io'
+import 'dotenv/config'
 
 import { registerEvent } from '@juanpablo.is/filevent'
 
