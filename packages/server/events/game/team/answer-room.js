@@ -12,8 +12,9 @@ const event = ({ io, store }, data, cb) => {
   const { value, idTeam } = data
 
   const team = teams.get(idTeam)
-  const roomLevel = team.currentRoom
+  if (!team) return
 
+  const roomLevel = team.currentRoom
   if (team.rooms[roomLevel].finish) {
     return cb({ status: false, message: 'Ya ha respondido a esta sala' })
   }
@@ -79,11 +80,11 @@ const event = ({ io, store }, data, cb) => {
   }
 }
 
-function getSecondsDiff ({ timeStart, timeFinish }) {
+function getSecondsDiff({ timeStart, timeFinish }) {
   return (timeFinish - timeStart) / 1000
 }
 
-function isCorrectAnswer ({ value, options }) {
+function isCorrectAnswer({ value, options }) {
   const values = Array.isArray(options) ? options : [options]
   return values.some(v => v.toLowerCase() === value)
 }

@@ -1,15 +1,16 @@
 import { shuffle } from '../../utils.js'
 
-const event = ({ store, io }) => {
+const event = ({ store, io }, count = 2) => {
   const randomTeams = getRandomTeams({
     users: [...store.users.values()],
-    count: 2
+    count: count
   })
 
   Object.assign(store, {
     teams: randomTeams
-  })
-  ;[...randomTeams.values()].forEach(teams => {
+  });
+
+  [...randomTeams.values()].forEach(teams => {
     const { id, participants } = teams
 
     io.socketsLeave(id)
@@ -30,7 +31,7 @@ const event = ({ store, io }) => {
 
 export default event
 
-function getRandomTeams ({ users = [], count = 0 }) {
+function getRandomTeams({ users = [], count = 0 }) {
   const _users = shuffle(users)
 
   return Array.from({ length: count }).reduce((acc, _, i) => {
