@@ -3,7 +3,7 @@ import { shuffle } from '../../utils.js'
 const event = ({ store, io }) => {
   const randomTeams = getRandomTeams({
     users: [...store.users.values()],
-    count: 2
+    count: 1
   })
 
   Object.assign(store, {
