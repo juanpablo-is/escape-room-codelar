@@ -45,9 +45,9 @@ const event = ({ io, store }, data) => {
     points: team.rooms[i] ? team.rooms[i].points : 0,
     time: team.rooms[i]
       ? getSecondsDiff({
-          timeStart: team.rooms[i].timeStart,
-          timeFinish: team.rooms[i].timeFinish
-        })
+        timeStart: team.rooms[i].timeStart,
+        timeFinish: team.rooms[i].timeFinish
+      })
       : 0
   }))
 
@@ -56,9 +56,9 @@ const event = ({ io, store }, data) => {
     points: team.rooms[roomLevel] ? team.rooms[roomLevel].points : 0,
     time: team.rooms[roomLevel]
       ? getSecondsDiff({
-          timeStart: team.rooms[roomLevel].timeStart,
-          timeFinish: team.rooms[roomLevel].timeFinish
-        })
+        timeStart: team.rooms[roomLevel].timeStart,
+        timeFinish: team.rooms[roomLevel].timeFinish
+      })
       : 0
   })
 
@@ -77,18 +77,18 @@ const event = ({ io, store }, data) => {
   io.to(idTeam).emit('game:team:show-results', results)
 }
 
-function getSecondsDiff ({ timeStart, timeFinish }) {
+function getSecondsDiff({ timeStart, timeFinish }) {
   return (timeFinish - timeStart) / 1000
 }
 
-function isCorrectCart (cartMessage, words) {
+function isCorrectCart(cartMessage, words) {
   const regex = /<hide>(.*?)<\/hide>/g
   const matchMessage = cartMessage.match(regex)
 
   const countWords = matchMessage.filter((word, index) => {
     const palabra = word.replace(/<\/?hide>/g, '').replaceAll(' ', '')
 
-    return words[index] === palabra
+    return words[index].toLowerCase() === palabra.toLowerCase()
   })
 
   const isCorrect = countWords.length === matchMessage.length
@@ -96,9 +96,8 @@ function isCorrectCart (cartMessage, words) {
 
   const message = isCorrect
     ? `Felicitaciones!`
-    : `Incorrecto, tienen ${diffWords} palabra${
-        diffWords !== 1 ? 's' : ''
-      } correcta${diffWords !== 1 ? 's' : ''}`
+    : `Incorrecto, tienen ${diffWords} palabra${diffWords !== 1 ? 's' : ''
+    } correcta${diffWords !== 1 ? 's' : ''}`
 
   return { isCorrect, message }
 }

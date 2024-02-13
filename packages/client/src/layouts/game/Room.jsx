@@ -68,7 +68,7 @@ const Room = (props) => {
 
 export default Room;
 
-const Response = ({ type = 'input', options = [], onResponse }) => {
+const Response = ({ type = 'input', props = {}, onResponse }) => {
   function handlerResponse(e) {
     e.preventDefault();
 
@@ -89,6 +89,7 @@ const Response = ({ type = 'input', options = [], onResponse }) => {
           placeholder="Ingrese respuesta"
           className="flex-1"
           autoFocus
+          {...props}
         />
       )}
 
@@ -97,7 +98,7 @@ const Response = ({ type = 'input', options = [], onResponse }) => {
           name="response"
           className="flex-1"
           placeholder="Seleccione respuesta"
-          options={options}
+          {...props}
         />
       )}
 

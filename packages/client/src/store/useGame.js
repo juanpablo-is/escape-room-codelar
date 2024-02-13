@@ -6,7 +6,10 @@ import { states } from '@/utils'
 
 const socket = io(import.meta.env.VITE_URL_SERVER_SOCKET, {
   autoConnect: false,
-  closeOnBeforeunload: false
+  closeOnBeforeunload: false,
+  extraHeaders: {
+    'ngrok-skip-browser-warning': Date.now()
+  }
 })
 
 // TODO: borrar a futuro

@@ -3,151 +3,162 @@ export default [
     rooms: [
       {
         id: 1,
-        name: 'La Codificación Mágica en el Taller de Santa',
+        name: 'El Mensaje Revelador del Año',
         response: {
-          value: 'feliz prospero año'
+          value: ['unicef'],
+          props: {
+            maxLength: 6
+          }
         },
         statement: `
-En el Taller de Santa, una noche antes de la Navidad, la magia estaba en pleno apogeo. Sin embargo, un hechizo misterioso envolvió la sala, dejando a los elfos perplejos.
-
-En el centro, una imagen encantada revelaba caracteres antiguos y extraños que formaban una frase crucial.
+En la sala de reuniones, un enorme poster navideño revela un mensaje secreto de despedida. Cada equipo se enfrenta a un enigma intrigante: las instrucciones ocultas en el poster indican que, para pasar, deben descifrar el mensaje detrás de las palabras festivas. Las pistas dispersas por la sala los guiarán hacia una despedida estelar del año.
 
 <br />
 
-<img src="rooms/1/acertijo.png" style="max-width: 500px; width: 100%; margin: auto;" />
+Con lápices en mano y mente aguda, los participantes desentrañan el mensaje encriptado que revela la llave que les permite seguir en el camino. La resolución del acertijo no solo permitirá el acceso a la siguiente fase del juego, sino que también abrirá la puerta simbólica hacia un nuevo año lleno de logros y desafíos emocionantes.
 
 <br />
 
-Cada equipo se encontró frente al enigma, centrados en descifrar letra por letra de esta codificación mágica. Entre juguetes y luces centelleantes, los equipos se embarcaron en una búsqueda para desentrañar el mensaje secreto que guardaba la clave para deshacer el hechizo.
+<img src="rooms/despedida/1/mensaje.png" style="max-width: 500px; width: 100%; margin: auto;" />
+<p style="text-align:center;font-style: italic;">Mensaje poster</p>
 
 <br />
-
-<img src="rooms/1/cifrado.png" style="max-width: 500px; width: 100%; margin: auto;" />
-
-<br />
-
-La colaboración y la astucia eran su única esperanza para traer de vuelta la magia navideña.
-`
-      },
-      {
-        id: 2,
-        name: 'La Travesía de los Magos',
-        response: {
-          value: ['vela', 'la vela', 'una vela', 'velas', 'las velas']
-        },
-        statement: `
-En la víspera de Navidad, Santa Claus se enfrenta a un problema inusual: una estrella mágica que ilumina su camino hacia las chimeneas ha desaparecido misteriosamente. Los equipos, ahora convertidos en ayudantes especiales de Santa, ingresan a la Sala de las Estrellas, una habitación encantada llena de constelaciones brillantes y adornos resplandecientes. 
-
-<br />
-
-Cada equipo descubre un rompecabezas astrológico único que revela **un acertijo secreto**, oculta entre las estrellas. La respuesta al enigma celestial será la llave para recuperar la estrella perdida y restaurar la magia de la Nochebuena. 
-
-<br />
-
-<img src="rooms/2/acertijo.jpg" style="max-width: 500px; width: 100%; margin: auto;" />
-
-<br />
-
-Con ingenio y colaboración, los equipos deben descifrar las pistas estelares y descubrir el mensaje oculto para cumplir con la misión y devolver el brillo a la noche estrellada.
-
-
-<br />
-
-**¡Que comience la búsqueda de la estrella perdida en este escape room navideño lleno de misterio y encanto!**
-`
-      },
-      {
-        id: 3,
-        name: 'El Misterio de la Carta Navideña',
-        response: {
-          value: 'familia'
-        },
-        statement: `
-En la víspera de Navidad, Santa Claus descubre con alarma que la carta esencial con la lista de regalos ha desaparecido misteriosamente. Anticipando el caos, envía a sus elfos más hábiles a diferentes partes del Polo Norte para recuperarla. Sin embargo, cada equipo se enfrenta a la desafortunada situación de encontrar una réplica de la carta resguardada bajo llave en un cofre.
-
-<br />
-
-Debajo del cofre, se ve una carta que contiene un mensaje navideño y un código cifrado extraño, parece ser un mensaje oculto, los equipos deberán descifrar la carta descubriendo la palabra oculta que revela la llave del cofre y garantizar el éxito de la entrega de regalos.
-
-<br />
-<img src="rooms/3/acertijo.png" style="max-width: 500px; width: 100%; margin: auto;" />
-<p style="text-align:center;font-style: italic;">Carta del cofre</p>
-
-<br />
-<img src="rooms/3/cifrado.png" style="max-width: 500px; width: 100%; margin: auto;" />
+<img src="rooms/despedida/1/cifrado.png" style="max-width: 500px; width: 100%; margin: auto;" />
 <p style="text-align:center;font-style: italic;">Mensaje oculto</p>
 <br />
 
-La carrera contra el tiempo y el deseo de un feliz amanecer navideño motivan a los equipos a descifrar la palabra oculta y proseguir con su misión.
-`
+¡Que la despedida del año sea tan brillante como las estrellas en el cielo!
+      `
+      },
+      {
+        id: 2,
+        name: 'El Camino hacia el Nuevo Comienzo',
+        response: {
+          value: ['argentina'],
+          props: {
+            maxLength: 9
+          }
+        },
+        statement: `
+En la víspera de Año Nuevo, los empleados de una empresa se encuentran en una sala especial preparada para la despedida del año laboral. Para abrir la puerta que los llevará hacia un nuevo comienzo, cada equipo debe resolver un enigma único. En una mesa, encuentran una hoja con puntos numerados y una lista de elementos relacionados con la tematica.
+
+<br />
+
+Al unir los puntos correspondientes a los elementos relevantes, revelarán un dibujo que representa la palabra clave necesaria para desbloquear el siguiente capítulo del EscapeRoom.
+
+<br />
+
+En la sala, los participantes descubren que algunos puntos deben ignorarse, mientras que otros son esenciales para formar el dibujo que simboliza la transición hacia el nuevo año. Con creatividad y reflexión sobre los eventos del año que pasó, los equipos deben trabajar juntos para completar el dibujo y desentrañar el significado oculto detrás de cada línea trazada.
+
+<br />
+
+## **Tematica "Despedida de año & Trabajo"**
+<br />
+<img src="rooms/despedida/2/puntos.png" style="max-width: 500px; width: 100%; margin: auto;" />
+
+<br />
+
+## **Lista de elementos**
+
+| <!-- -->      | <!-- -->      |
+|:-------------:|:-------------:|
+| 1. Celebración          | 15. Pintar       |
+| 2. Montaña         | 16. Rosa       |
+| 3. Fiesta         | 17. Reconocimiento       |
+| 4. Brindis         | 18. Primavera       |
+| 5. Bicicleta         | 19. Equipo       |
+| 6. Manzana         | 20. Europa       |
+| 7. Agradecimiento         | 21. CodeLar       |
+| 8. Cielo         | 22. Compañeros       |
+| 9. Cantar         | 23. Futbol       |
+| 10. Logros         | 24. Matrimonio       |
+| 11. Mariposa         | 25. Trabajo       |
+| 12. Balance         | 26. Chocolate       |
+| 13. Metas         | 27. SpacialChat       |
+| 14. Celular         | 28. Anhelos       |
+
+<br />
+
+¡Que empiece la conexión de puntos hacia el emocionante camino del nuevo comienzo!
+      `
+      },
+      {
+        id: 3,
+        name: 'Cierre Estelar',
+        response: {
+          value: "042",
+          props: {
+            type: 'number',
+          }
+        },
+        statement: `
+En la víspera de Año Nuevo, el equipo de trabajo se encuentra frente a una puerta cerrada con un candado peculiar que guarda la clave para despedir el año laboral. 
+
+<br />
+
+Dentro de la sala, cada equipo tiene la tarea de descifrar un número oculto crucial para abrir el candado y liberar el camino hacia el cierre estelar. Sin embargo, la única guía proporcionada son enigmas que indican la ubicación correcta de algunos números y la existencia de otros que son correctos pero mal ubicados. 
+
+<br />
+
+La resolución del acertijo permitirá a los equipos sellar el año laboral con una despedida inolvidable.
+
+<br />
+
+<img src="rooms/despedida/3/crack-code.png" style="max-width: 500px; width: 100%; margin: auto;" />
+
+<br />
+
+¡Que comience la búsqueda del **número perfecto** para cerrar el capítulo laboral y dar la bienvenida al **nuevo año**!
+      `
       },
       {
         id: 4,
-        name: 'La Fiesta Secreta de Santa',
+        name: 'Despedida en la Pirámide del Año',
         response: {
-          value: '16 julio',
-          type: 'select',
-          options: [
-            '15 mayo',
-            '16 mayo',
-            '19 mayo',
-            '17 junio',
-            '18 junio',
-            '14 julio',
-            '16 julio',
-            '14 agosto',
-            '15 agosto',
-            '17 agosto'
-          ]
+          value: '111221',
+          props: {
+            type: "number",
+          }
         },
         statement: `
-En el Polo Norte, Santa Claus organiza una fiesta sorpresa para celebrar el éxito del taller de juguetes. Sin embargo, la entrada a la sala de la fiesta está protegida por un enigma misterioso.
+En la víspera de Año Nuevo, el equipo se encuentra en la misteriosa **"Pirámide del Tiempo"**, una sala de despedida del trabajo donde cada fila de números representa un año de experiencias laborales.
 
-Cada equipo debe descifrar la **fecha exacta** del evento entre varias opciones, lo único que se sabe es un comentario de que Juan conoce el mes y Laura conoce el día, y de una conversación corta que tuvieron en un pasillo.
-
-<br />
-
-### **Conversación:**
----
-**Juan:** Yo no sé cuando es la fiesta, ***pero sé que tu tampoco***
-
-**Laura:** Yo no lo sabía, pero ahora sí
-
-**Juan:** Vale, entonces yo ahora lo sé
----
+Sin embargo, para abrir la puerta que los lleva a la siguiente etapa de sus carreras, los equipos deben resolver un enigma basado en la secuencia de la pirámide. 
 
 <br />
 
-Trabajando juntos, los equipos deben descifrar las claves proporcionadas por Juan y Laura para determinar la fecha precisa de la fiesta y así desbloquear la puerta de la celebración secreta de Santa. 
+La primera fila muestra un 1, y la descripción de la segunda fila sería un uno, es decir, 11. Así, las filas posteriores revelan patrones de números, y los equipos deben descifrar la lógica subyacente para avanzar hacia el siguiente capítulo de sus trayectorias profesionales.
 
 <br />
-<img src="rooms/4/acertijo.png" style="max-width: 500px; width: 100%; margin: auto;" />
+
+<img src="rooms/despedida/4/piramide.png" style="max-width: 500px; width: 100%; margin: auto;" />
+
 <br />
 
-**¡Que comience la búsqueda del día y el mes perfectos para la Fiesta Secreta de Santa!**
+¡Que comience la travesía de despedida en la **"Pirámide del Año"**, donde cada número es una narrativa laboral en sí mismo!
 `
       }
     ],
     cartMessage: `
-Querido equipo de **CodeLar**,
+Hola equipo **Codelar**,
 
 <br/>
 
-En esta época navideña, quiero expresar mi agradecimiento a cada uno de ustedes. Ha sido un año lleno de desafíos y éxitos, pero juntos hemos demostrado que somos más que compañeros, somos una <hide>familia</hide>. Gracias por su dedicación y contribuciones significativas.
-
-<br />
-
-Que la luz de la <hide>vela</hide> ilumine nuestros corazones con alegría y esperanza durante estas festividades. Les deseo a todos un feliz navidad y <hide>feliz próspero año</hide> nuevo, lleno de momentos especiales con sus seres queridos. Que la paz y la felicidad reinen en sus hogares.
+En este cierre de 2023, queremos expresar nuestro agradecimiento a todos ustedes. Son un equipo excepcional. ¿Por qué estamos tan seguros de que lo son? Porque está compuesto por individuos con una calidad humana excepcional, a veces incluso más importante que la calidad profesional. La ayuda nunca se niega a nadie, y las risas nunca faltan.
 
 <br/>
 
-¡Felices fiestas!
+Cada uno de ustedes es una persona educada, respetuosa, inteligente e interesante. Nos enorgullece el equipo que hemos formado hasta el día de hoy y esperamos que siga creciendo gradualmente para que podamos conocer a más personas tan interesantes como ustedes. Este año nos hemos enfrentado a diversos desafíos, destacando la GGPx, donde nos adaptamos tan pronto como fue posible, manteniendo un alto nivel técnico y profesional. El proyecto de la Teletón de Caracol de este año fue el mejor que hemos llevado a cabo, sin ningún inconveniente. Dentro de la GGP, el proyecto en <hide>Argentina</hide> ha representado un desafío en todas las áreas de la empresa. Gracias al excelente nivel de nuestros profesionales, hemos logrado sacarlo adelante e incluso convertirnos en parte fundamental del proceso de transformación de <hide>Unicef</hide> Argentina.
+
+<br/>
+
+Para el 2024, buscamos mejorar nuestra organización, establecer claramente las reglas que rigen a cada uno en la empresa, ajustar la gamificación según sea necesario hasta encontrar un punto en el que todos nos sintamos cómodos, generar desafíos internos de alto nivel que nos impulsen a salir de posibles zonas de confort y encontrar nuevos compañeros de trabajo que nos inspiren día a día a mejorar como personas y profesionales.
 
 <br/>
 
 Con gratitud,
 
-**Juan Pablo Barrera**
+**CodeLar**
 `
   }
 ]

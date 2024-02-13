@@ -80,3 +80,7 @@
   color: theme('colors.primary');
   font-weight: bold;
 }
+
+.markdown table {
+  width: 100%;
+}
